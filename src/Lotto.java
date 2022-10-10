@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 /*
  로또 당첨 프로그램
+ 작성자    장재훈
  */
 public class Lotto {
 
@@ -13,10 +14,10 @@ public class Lotto {
 
     public static void result() {
         Scanner sc = new Scanner(System.in);
-        ArrayList<int[]> numbers = new ArrayList<>(); // 로또 구매 수량을 담을 배열
+        ArrayList<int[]> numbers = new ArrayList<>(); // 로또 당첨 번호를 담기 위한 배열 생성
         int buy;    // 로또 구매 수량
         char orderN = 'A'; // 맨 앞의 기호 초기값
-        int[] outputN; // 출력 번호
+        int[] outputN;     // 출력 번호
         int[] winningN;    //당첨 번호
 
         try {
@@ -24,19 +25,22 @@ public class Lotto {
             System.out.print("로또 개수를 입력해 주세요.(숫자 1 ~ 10): ");
             buy = sc.nextInt();
             if (!(buy > 0 && buy < 11)) {
-                System.out.println("1~10 사이의 숫자만 입력해주세요.");
+                System.out.println("1~10 사이의 숫자만 입력해주세요 : ");
                 return;
             }
         } catch (Exception e) {
-            System.out.println("정확한 숫자를 입력해주세요.");
+            System.out.println("1~10 사이의 숫자만 입력해주세요.");
             return;
         }
 
-        // 입력 받은 개수에 따른 로또 번호 랜덤 생성
+        /* 구매한 수량만큼(입력한 숫자만큼) 루프문을 실행하며,
+           로또 번호 개수를 생성하여, 배열에 추가함.
+         */
         for (int i = 0; i < buy; i++) {
 
-            //6개의 랜덤 로또 번호 생성
+            //6개의 랜덤 로또 번호 생성하여 배열에 추가함.
             numbers.add(i, lottoNumberCreate());
+
         }
 
         // 생성된 로또 번호 출력
